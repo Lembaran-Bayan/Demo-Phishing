@@ -11,7 +11,8 @@ export default function ResultPage() {
     console.log(params.get("id"));
     setID(params.get("id") as string);
     setPassword(params.get("password") as string);
-  });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <main className="flex flex-col justify-center items-center text-[30px] min-h-screen bg-white text-black">
       <div className="flex gap-[20px]">
